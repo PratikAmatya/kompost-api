@@ -1,4 +1,4 @@
-const domainService = require("../../../../services/v1/admin/domain");
+const pickupService = require("../../../../services/v1/admin/pickup");
 
 const httpStatus = require("http-status");
 
@@ -6,12 +6,12 @@ const { ValidationError } = require("../../../../errors");
 
 module.exports = async (req, res, next) => {
   try {
-    const reqPermission = "domain.list";
+    const reqPermission = "pickup.create";
     if (req.decoded.permissions.includes(reqPermission)) {
-      const domains = await domainService.listDomain();
+      const pickup = await pickupService.createPickup(req.body);
       res.status(httpStatus.OK).json({
         message: "Success",
-        data: domains,
+        data: pickup,
       });
     } else {
       throw new ValidationError("No Permission", 403);
