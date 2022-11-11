@@ -62,7 +62,7 @@ app.use((req, res, next) => {
 });
 
 /* API endpoints for user */
-app.use("/v1/admin", require("./routes/v1/admin"));
+// app.use("/v1/admin", require("./routes/v1/admin"));
 
 /**
  * Error Handler. Provides full stack - remove from production
