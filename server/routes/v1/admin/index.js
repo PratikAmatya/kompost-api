@@ -1,4 +1,5 @@
 const orderRoute = require("./order");
+const pickupRoute = require("./pickup");
 
 const router = new require("express").Router();
 
@@ -15,5 +16,6 @@ router.use((req, res, next) => {
 });
 
 router.use("/order", orderRoute);
+router.use("/pickup", pickupRoute);
 
 module.exports = router;

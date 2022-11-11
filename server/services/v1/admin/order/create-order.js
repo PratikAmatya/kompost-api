@@ -22,13 +22,12 @@ module.exports = async (queryObj) => {
   }
 
   const validPaymentMethods = ["COD", "online"];
-  const validOrderStatus = ["pending", "delivered", "cancelled"];
 
   if (!validPaymentMethods.includes(queryObj.paymentMethod)) {
     throw new ValidationError("Invalid Payment Method", 403);
   }
 
-  if (!validOrderStatus === "pending") {
+  if (!queryObj.status === "pending") {
     throw new ValidationError("Invalid Order Status", 403);
   }
 
