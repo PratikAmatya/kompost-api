@@ -15,6 +15,12 @@ module.exports = {
         createdAt: moment().format("YYYY-MM-DD hh:mm:ss"),
         updatedAt: moment().format("YYYY-MM-DD hh:mm:ss"),
       },
+      {
+        userId: 3,
+        roleId: "member",
+        createdAt: moment().format("YYYY-MM-DD hh:mm:ss"),
+        updatedAt: moment().format("YYYY-MM-DD hh:mm:ss"),
+      },
     ]);
   },
 

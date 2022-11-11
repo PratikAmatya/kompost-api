@@ -35,6 +35,7 @@ app.get("/", (_req, res) => {
 
 /* API Route for login, register */
 app.use("/v1/admin", require("./routes/v1/admin/login"));
+app.use("/v1/member", require("./routes/v1/member/login"));
 
 // jwt
 app.use((req, res, next) => {

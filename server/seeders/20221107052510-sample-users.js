@@ -29,7 +29,7 @@ module.exports = {
         name: "Anwesh Pvt. Ltd.",
         email: "aashnashrestha@gmail.com",
         password: bcrypt.hashSync("12345678", salt),
-        phone: "9818254568",
+        phone: "9818254569",
         active: true,
         createdAt: moment().format("YYYY-MM-DD hh:mm:ss"),
         updatedAt: moment().format("YYYY-MM-DD hh:mm:ss"),
