@@ -1,4 +1,4 @@
-const sourceService = require("../../../../services/v1/admin/source");
+const orderService = require("../../../../services/v1/admin/order");
 
 const httpStatus = require("http-status");
 
@@ -6,12 +6,16 @@ const { ValidationError } = require("../../../../errors");
 
 module.exports = async (req, res, next) => {
   try {
-    const reqPermission = "source.create";
+    const reqPermission = "order.update";
     if (req.decoded.permissions.includes(reqPermission)) {
-      const source = await sourceService.createSource(req.body);
+      const order = await orderService.updateOrder(
+        req.params.orderId,
+        req.body
+      );
+
       res.status(httpStatus.OK).json({
         message: "Success",
-        data: source,
+        data: order,
       });
     } else {
       throw new ValidationError("No Permission", 403);

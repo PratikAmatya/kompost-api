@@ -1,6 +1,4 @@
-const domainRoute = require("./domain");
-const sourceRoute = require("./source");
-const projectRoute = require("./project");
+const orderRoute = require("./order");
 
 const router = new require("express").Router();
 
@@ -16,8 +14,6 @@ router.use((req, res, next) => {
   }
 });
 
-router.use("/domain", domainRoute);
-router.use("/source", sourceRoute);
-router.use("/project", projectRoute);
+router.use("/order", orderRoute);
 
 module.exports = router;
