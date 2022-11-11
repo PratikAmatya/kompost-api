@@ -15,6 +15,7 @@ module.exports = async (queryObj) => {
   const user = await User.findOne({
     where: {
       phone: queryObj.phone,
+      active: true,
     },
   });
 
