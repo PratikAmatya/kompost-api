@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
     const token = jwt.sign(
       {
         id: user.id,
-        email: user.email,
+        phone: user.phone,
         roles,
         permissions,
       },

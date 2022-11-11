@@ -18,13 +18,19 @@ module.exports = (sequelize, DataTypes) => {
 
       User.hasMany(models.Pickup, {
         as: "UserPickup",
-        foreignKey: "phone",
-        sourceKey: "phone",
+        foreignKey: "userId",
+        sourceKey: "id",
       });
     }
   }
   User.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -39,15 +45,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      address: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      gender: {
-        type: DataTypes.ENUM,
-        values: ["male", "female", "unspecified"],
         allowNull: false,
       },
       active: {

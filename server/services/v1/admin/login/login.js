@@ -6,17 +6,20 @@ const { ValidationError } = require("../../../../errors");
 
 /**
  * Get a User
- * It will find a User from provided email and password
+ * It will find a User from provided phone and password
  * @param {queryObj}
  * @returns {Promise<User>}
  */
 
 module.exports = async (queryObj) => {
+  console.log("\n>>", queryObj);
   const user = await User.findOne({
     where: {
-      email: queryObj.email,
+      phone: queryObj.phone,
     },
   });
+
+  console.log("\n>>", user);
 
   if (user === null) {
     throw new ValidationError("User not found", queryObj);
