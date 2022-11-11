@@ -12,14 +12,11 @@ const { ValidationError } = require("../../../../errors");
  */
 
 module.exports = async (queryObj) => {
-  console.log("\n>>", queryObj);
   const user = await User.findOne({
     where: {
       phone: queryObj.phone,
     },
   });
-
-  console.log("\n>>", user);
 
   if (user === null) {
     throw new ValidationError("User not found", queryObj);
@@ -37,6 +34,10 @@ module.exports = async (queryObj) => {
 
   for (let i = 0; i < role.length; i += 1) {
     roles.push(role[i].dataValues.roleId);
+  }
+
+  if (!roles.includes("administrator")) {
+    throw new ValidationError("You are not authorized", 403);
   }
 
   const permission = await RolePermission.findAll({
