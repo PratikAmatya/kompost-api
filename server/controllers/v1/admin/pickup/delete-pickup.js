@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
 
       if (deleteStatus) {
         res.status(httpStatus.OK).json({
-          message: "Success",
+          message: "success",
         });
       } else {
         res.status(500).json({

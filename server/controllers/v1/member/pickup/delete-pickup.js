@@ -1,4 +1,4 @@
-const orderService = require("../../../../services/v1/member/order");
+const pickupService = require("../../../../services/v1/member/pickup");
 
 const httpStatus = require("http-status");
 
@@ -6,10 +6,10 @@ const { ValidationError } = require("../../../../errors");
 
 module.exports = async (req, res, next) => {
   try {
-    const reqPermission = "order.delete";
+    const reqPermission = "pickup.delete";
     if (req.decoded.permissions.includes(reqPermission)) {
-      const deleteStatus = await orderService.deleteOrder({
-        orderId: req.params.orderId,
+      const deleteStatus = await pickupService.deletePickup({
+        pickupId: req.params.pickupId,
         userId: req.decoded.id,
       });
 

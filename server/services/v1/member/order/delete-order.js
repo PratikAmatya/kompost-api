@@ -23,13 +23,18 @@ module.exports = async (queryObj) => {
   const order = await Order.findOne({
     where: {
       id: queryObj.orderId,
-      userId: queryObj.userId,
-      active: true,
     },
   });
 
   if (!order) {
     throw new ValidationError("Unable to find the order.", 404);
+  }
+
+  if (order.userId !== queryObj.userId) {
+    throw new ValidationError(
+      "You are not authorized to delete this order.",
+      403
+    );
   }
 
   order.status = "cancelled";

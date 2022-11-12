@@ -12,11 +12,11 @@ module.exports = async (queryObj) => {
   const order = await Order.findOne({
     where: {
       id: queryObj.orderId,
-      active: true,
     },
   });
+
   if (!order) {
-    throw new ValidationError("Unable to find the source", 404);
+    throw new ValidationError("Unable to find the order", 404);
   }
 
   if (order.userId !== queryObj.userId) {

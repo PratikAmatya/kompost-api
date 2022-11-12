@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
       );
 
       res.status(httpStatus.OK).json({
-        message: "Success",
+        message: "success",
         data: order,
       });
     } else {

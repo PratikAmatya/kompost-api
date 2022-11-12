@@ -28,7 +28,7 @@ module.exports = async (req, res, next) => {
     const { password, ...restMember } = user.dataValues;
 
     res.status(httpStatus.OK).json({
-      message: "Success",
+      message: "success",
       member: restMember,
       permissions,
       token,

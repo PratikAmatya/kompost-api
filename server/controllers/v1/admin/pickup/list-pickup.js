@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     if (req.decoded.permissions.includes(reqPermission)) {
       const pickups = await pickupService.listPickup();
       res.status(httpStatus.OK).json({
-        message: "Success",
+        message: "success",
         data: pickups,
       });
     } else {

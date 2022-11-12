@@ -1,4 +1,4 @@
-const orderService = require("../../../../services/v1/admin/order");
+const orderService = require("../../../../services/v1/member/order");
 
 const httpStatus = require("http-status");
 
@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
       );
 
       res.status(httpStatus.OK).json({
-        message: "Success",
+        message: "success",
         data: order,
       });
     } else {

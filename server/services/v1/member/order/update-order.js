@@ -12,12 +12,18 @@ module.exports = async (orderId, queryObj) => {
   const order = await Order.findOne({
     where: {
       id: orderId,
-      active: true,
     },
   });
 
   if (!order) {
     throw new ValidationError("Unable to find the Order.", 404);
+  }
+
+  if (order.userId !== queryObj.userId) {
+    throw new ValidationError(
+      "You are not authorized to update this Order.",
+      403
+    );
   }
 
   const validOrderStatus = ["pending", "delivered", "cancelled"];
