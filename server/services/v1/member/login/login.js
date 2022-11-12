@@ -20,9 +20,9 @@ module.exports = async (queryObj) => {
   });
 
   if (user === null) {
-    throw new ValidationError("User not found", queryObj);
+    throw new ValidationError("User not found", 404);
   } else if (!user.validPassword(queryObj.password)) {
-    throw new ValidationError("Wrong Password", queryObj);
+    throw new ValidationError("Wrong Password", 403);
   }
 
   const role = await UserRole.findAll({
