@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (_req, res) => {
   res.status(httpStatus.OK).json({
     data: {
-      message: "API endpoints for Kompost.",
+      message: "API endpoints for Kompost API.",
     },
   });
 });
@@ -65,6 +65,9 @@ app.use((req, res, next) => {
 
 /* API endpoints for admin */
 app.use("/v1/admin", require("./routes/v1/admin"));
+
+/* API endpoints for member */
+app.use("/v1/member", require("./routes/v1/member"));
 
 /**
  * Error Handler. Provides full stack - remove from production

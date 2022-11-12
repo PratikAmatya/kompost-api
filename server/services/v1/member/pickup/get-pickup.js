@@ -8,14 +8,20 @@ const { ValidationError } = require("../../../../errors");
  * @param queryObj
  * @returns {Promise<Pickup>}
  */
-module.exports = async (pickupId) => {
+module.exports = async (queryObj) => {
   const pickup = await Pickup.findOne({
     where: {
-      id: pickupId,
+      id: queryObj.pickupId,
     },
   });
   if (!pickup) {
-    throw new ValidationError("Unable to find the ", 404);
+    throw new ValidationError("Unable to find the pickup record", 404);
+  }
+  if (pickup.userId !== queryObj.userId) {
+    throw new ValidationError(
+      "You are not authorized to view this pickup record",
+      403
+    );
   }
 
   return pickup;

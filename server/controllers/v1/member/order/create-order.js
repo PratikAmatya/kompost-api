@@ -1,4 +1,4 @@
-const orderService = require("../../../../services/v1/admin/order");
+const orderService = require("../../../../services/v1/member/order");
 
 const httpStatus = require("http-status");
 
@@ -8,9 +8,12 @@ module.exports = async (req, res, next) => {
   try {
     const reqPermission = "order.create";
     if (req.decoded.permissions.includes(reqPermission)) {
-      const order = await orderService.createOrder(req.body);
+      const order = await orderService.createOrder({
+        ...req.body,
+        userId: req.decoded.id,
+      });
       res.status(httpStatus.OK).json({
-        message: "Success",
+        message: "success",
         data: order,
       });
     } else {
